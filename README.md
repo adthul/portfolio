@@ -3,7 +3,7 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-![alt tag](http://raw.github.com/adthul/portfolio/blob/master/public/images/Screenshots/screenshot_homepage.png)
+![alt tag](http://github.com/adthul/portfolio/blob/master/public/images/Screenshots/screenshot_homepage.png)
 
 Things you may want to cover:
 
