@@ -16,4 +16,3 @@ To run, input these into your command line from the Portfolio directory:
 "rails s" to start a local server.
 
 you can then view the page by typing "localhost:3000" into your browser.
-<tt>rake doc:app</tt>.
