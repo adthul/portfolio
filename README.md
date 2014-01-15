@@ -3,6 +3,8 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+![alt tag](http://raw.github.compublic/images/screenshots/screenshot_homepage.png)
+
 Things you may want to cover:
 
 * Ruby version
