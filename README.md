@@ -1,30 +1,19 @@
-== README
+Andy Thul's Portfolio
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a basic Rails app that displays a homepage with a brief description of
+of myself. if you would like to use it feel free to submit a "git pull" request.
 
 ![alt tag](https://raw2.github.com/adthul/portfolio/master/public/images/Screenshots/screenshot_homepage.png)
 
-Things you may want to cover:
+* Ruby version 2.0.0p247
 
-* Ruby version
+To run, input these into your command line from the Portfolio directory:
 
-* System dependencies
+"bundle install" to include all necessary gems.
 
-* Configuration
+"rake" to run basic tests checking the contents of the homepage.
 
-* Database creation
+"rails s" to start a local server.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
+you can then view the page by typing "localhost:3000" into your browser.
 <tt>rake doc:app</tt>.
