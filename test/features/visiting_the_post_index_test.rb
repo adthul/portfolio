@@ -2,13 +2,7 @@ require "test_helper"
 
 feature "Visiting the Post Index" do
   scenario "with existing posts" do
-    # Given existing posts
-    Post.create(title: "Becoming a Code Fellow", body: "Means striving for excellence")
-
-    # When i visit /posts
-    visit posts_path
-
-    # Then the existing posts should be loaded
-    page.text.must_include "Becoming a Code Fellow"
+    visit post_path(posts(:cr).id)
+    page.text.must_include posts(:cr).title
   end
 end
