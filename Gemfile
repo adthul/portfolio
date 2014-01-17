@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'foundation-rails', github: "codefellows/foundation-rails"
 
-group :developement do
+group :development do
   gem 'sqlite3'
 end
 
