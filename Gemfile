@@ -10,9 +10,14 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'sqlite3'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'foundation-rails', github: "codefellows/foundation-rails"
 
 group :doc do
   gem 'sdoc', require: false
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 group :test do

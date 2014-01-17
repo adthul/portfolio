@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Portfolio</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+     <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "Home", root_path %></a></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="divider"></li>
+          <li><%= link_to "Browse Posts", posts_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to "About" %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Projects" %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Contact Me" %></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="columns large-8">
+    <%= yield %>
+  </div>
+  </body>
 </html>
