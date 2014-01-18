@@ -13,27 +13,8 @@
   </head>
 
   <body>
-     <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to "Home", root_path %></a></h1>
-        </li>
-      </ul>
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="divider"></li>
-          <li><%= link_to "Browse Posts", posts_path %></li>
-          <li class="divider"></li>
-          <li><%= link_to "About" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Projects" %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Contact Me" %></li>
-        </ul>
-      </div>
-    </nav>
-    <div class="columns large-8">
+    <%= render 'layouts/header' %>
+
     <%= yield %>
-  </div>
   </body>
 </html>
