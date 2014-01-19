@@ -8,6 +8,7 @@ Portfolio::Application.routes.draw do
   get 'services', to: 'welcome#services'
   get 'portfolio', to: 'welcome#portfolio'
   get 'contact', to: 'welcome#contact'
+  # get 'Recent Work' to: 'welcome#portfolio_item'
   # get 'portfolio_item' to: 'welcome#portfolio_item'
   # You can have the root of your site routed with "root"
   root 'welcome#index'
