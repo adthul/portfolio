@@ -5,6 +5,10 @@ Portfolio::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'index', to: 'welcome#index'
+  get 'services', to: 'welcome#services'
+  get 'portfolio', to: 'welcome#portfolio'
+  get 'contact', to: 'welcome#contact'
+  # get 'portfolio_item' to: 'welcome#portfolio_item'
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
