@@ -26,14 +26,22 @@
           <li class="divider"></li>
           <li><%= link_to "About" %></li>
           <li class="divider"></li>
-          <li><%= link_to "Projects" %></li>
+          <li><%= link_to "Projects", projects_path %></li>
           <li class="divider"></li>
           <li><%= link_to "Contact Me" %></li>
         </ul>
       </div>
     </nav>
+
+    <% flash.each do |key, value| %>
+      <div class="alert-box round <%= flash_class(key) %>">
+        <%= value %>
+      </div>
+    <% end %>
+
     <div class="columns large-8">
     <%= yield %>
   </div>
+
   </body>
 </html>
