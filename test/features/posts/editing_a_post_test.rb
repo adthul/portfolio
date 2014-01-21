@@ -9,4 +9,12 @@ feature "Editing a Post" do
     page.text.must_include "Post was successfully updated"
     page.text.must_include posts(:mvc).title
   end
+
+  scenario "incorrectly editing an existing project" do
+    visit edit_project_path(projects(:portfolio))
+    fill_in "Name", with: "Err"
+    click_on "Update Project"
+    page.text.must_include "prohibited"
+    page.text.must_include "Name is too short"
+  end
 end

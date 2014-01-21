@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
+
   def index
     @projects = Project.all
   end
@@ -8,7 +10,25 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @project.update_attributes(project_params)
+      redirect_to @project, notice: "Project was successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @project.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.json { head :no_content }
+    end
   end
 
   def create
@@ -26,5 +46,9 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :technologies_used)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end
