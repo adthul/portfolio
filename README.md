@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/adthul/portfolio.png?branch=master)](https://travis-ci.org/adthul/portfolio)
+
 Andy Thul's Portfolio
 
 This is a basic Rails app that displays a homepage with a brief description of
