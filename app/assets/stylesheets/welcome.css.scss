@@ -1,3 +1,20 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#header_bg {
+  background-image:url('background.png');
+  height: 400px;
+  margin-bottom: 1.1875rem;
+}
+
+.name_s {
+  margin-top: 5em;
+}
+
+.header {
+  text-align: center;
+  color: #000000;
+  font-size: 5em;
+  text-shadow: 4px 4px 0px #D5D5D5, 7px 7px 0px rgba(0, 0, 0, 0.2);
+}
