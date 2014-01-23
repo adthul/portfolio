@@ -1,0 +1,7 @@
+mario:
+  email: its_a_me@mario.com
+  encrypted_password: woohoo
+
+luigi:
+  email: lets_a_go@luigi.com
+  encrypted_password: mama_mia

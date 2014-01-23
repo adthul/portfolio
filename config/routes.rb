@@ -1,9 +1,10 @@
 Portfolio::Application.routes.draw do
+  devise_for :users
   resources :posts
   resources :projects
 
   # get "projects", to: "projects#index"
-  get "welcome/index"
+  # get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
