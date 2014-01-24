@@ -1,7 +1,9 @@
 cr:
   title: Code Rails
   body: This is how I learned web developement
+  author: mario
 
 mvc:
   title: MVC
   body: The communication system between databases and browsers
+  author: mario

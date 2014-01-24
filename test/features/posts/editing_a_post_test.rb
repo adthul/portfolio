@@ -2,6 +2,8 @@ require "test_helper"
 
 feature "Editing a Post" do
   scenario "Submit updates to an existing post" do
+    sign_in
+
     visit post_path(posts(:cr))
     click_on "Edit"
     fill_in "Title", with: posts(:mvc).title
