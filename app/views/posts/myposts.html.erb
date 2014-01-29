@@ -1,16 +1,7 @@
-<h1>Listing posts</h1>
+<h1><%= current_user.email %>'s posts</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
+  <br>
   <tbody>
     <% @posts.each do |post| %>
       <tr>
@@ -26,6 +17,5 @@
 
 <br>
 <% if current_user %>
-  <%= link_to 'Show My Posts', myposts_path, class: 'button radius' %>
   <%= link_to 'New Post', new_post_path, class: "button radius" %>
 <% end %>

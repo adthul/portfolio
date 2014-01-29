@@ -12,6 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'foundation-rails', "~> 5.0.3"
 gem 'devise'
 gem 'pry'
+gem 'pundit'
 
 group :development, :test do
   gem 'sqlite3'

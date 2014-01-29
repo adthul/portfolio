@@ -8,6 +8,9 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def myposts
+    @posts = current_user.posts
+  end
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -26,8 +29,9 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    authorize @post
     respond_to do |format|
+
       if @post.save
         current_user.posts << @post
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -57,10 +61,18 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
+    authorize @post
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  def publish
+    @post = Post.find(params[:id])
+    authorize @post, :update?
+    @post.publish!
+    redirect_to @post
   end
 
   private
@@ -71,6 +83,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, (:published if current_user.role == 'editor'))
     end
 end

@@ -1,15 +1,15 @@
 require "test_helper"
 
 feature "Editing a Post" do
-  scenario "Submit updates to an existing post" do
-    sign_in
+  scenario "author can add updates to an existing post" do
+    sign_in(:author)
 
-    visit post_path(posts(:cr))
+    visit post_path(posts(:mvc))
     click_on "Edit"
-    fill_in "Title", with: posts(:mvc).title
+    fill_in "Title", with: posts(:cr).title
     click_on "Update Post"
     page.text.must_include "Post was successfully updated"
-    page.text.must_include posts(:mvc).title
+    page.text.must_include posts(:cr).title
   end
 
   scenario "incorrectly editing an existing project" do
