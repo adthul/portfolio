@@ -15,6 +15,8 @@ gem 'pry-rails'
 gem 'pundit'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'omniauth-twitter'
+gem 'figaro'
 
 group :development, :test do
   gem 'sqlite3'
