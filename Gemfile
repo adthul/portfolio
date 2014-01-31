@@ -11,8 +11,10 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'foundation-rails', "~> 5.0.3"
 gem 'devise'
-gem 'pry'
+gem 'pry-rails'
 gem 'pundit'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 group :development, :test do
   gem 'sqlite3'

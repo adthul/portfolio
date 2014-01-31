@@ -1,0 +1,49 @@
+<%= form_for([@comment.post, @comment]) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :author, "Name", class: "right inline" %>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :author %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :author_email, "Email", class: "right inline" %>
+    </div>
+    <div class="small-9 columns">
+    <%= f.text_field :author_email %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :content, "Comment", class: "right inline" %>
+    </div>
+    <div class="small-9 columns">
+    <%= f.text_field :content %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-9 small-offset-3 columns">
+      <%= f.submit %>
+    </div>
+  </div>
+  <% if policy(@comment).approve? %>
+  <div class="field">
+    <%= f.label :approved %>
+    <%= f.check_box :approved %>
+  </div>
+  <% end %>
+<% end %>

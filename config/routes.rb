@@ -1,7 +1,11 @@
 Portfolio::Application.routes.draw do
+
   devise_for :users
-  resources :posts
   resources :projects
+
+  resources :posts do
+    resources :comments
+  end
 
   # get "projects", to: "projects#index"
   # get "welcome/index"

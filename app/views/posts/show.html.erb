@@ -4,12 +4,10 @@
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
-
 <p>
   <strong>Body:</strong>
   <%= @post.body %>
 </p>
-
 <p id="author">
   <b>By:</b>
   <%= @post.author.email %>
@@ -19,6 +17,20 @@
   <b>Status:</b>
   <%= @post.published? ? "Published" : "Unpublished" %>
 </p>
-
+<%= link_to 'Comment', new_post_comment_path(@post), class: "button radius" %>
 <%= link_to 'Edit', edit_post_path(@post), class: "button radius" %> |
 <%= link_to 'Back', posts_path, class: "button radius" %>
+
+<% @post.comments.each do |comment| %>
+  <% if comment.approved? || (current_user.author? || current_user.editor?) %>
+    <p><em>Name:<em>
+      <%= comment.author %>
+    </p>
+    <p><em>Comment:<em>
+      <%= comment.content %>
+    </p>
+    <%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %> |
+    <%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
+
