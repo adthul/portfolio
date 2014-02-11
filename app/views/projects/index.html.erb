@@ -1,5 +1,10 @@
 <h2>My Portfolio</h2>
 
+<br />
+<%= link_to 'New Project', new_project_path %>
+<br />
+<br>
+
 <% @projects.each do |project| %>
   <div class="project" id="<%= dom_id(project) %>">
     <h3><%= project.name %></h3>
@@ -11,6 +16,3 @@
     </div>
   </div>
 <% end %>
-
-<br />
-<%= link_to 'New Project', new_project_path %>
