@@ -40,10 +40,4 @@
       <%= f.submit %>
     </div>
   </div>
-  <% if policy(@comment).approve? %>
-  <div class="field">
-    <%= f.label :approved %>
-    <%= f.check_box :approved %>
-  </div>
-  <% end %>
 <% end %>

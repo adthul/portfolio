@@ -22,7 +22,6 @@
 <%= link_to 'Back', posts_path, class: "button radius" %>
 
 <% @post.comments.each do |comment| %>
-  <% if comment.approved? || (current_user.author? || current_user.editor?) %>
     <p><em>Name:<em>
       <%= comment.author %>
     </p>
@@ -31,6 +30,5 @@
     </p>
     <%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %> |
     <%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
 <% end %>
 
