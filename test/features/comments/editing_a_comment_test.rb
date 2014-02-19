@@ -1,8 +1,8 @@
 require 'test_helper'
 
 feature 'editing a comment' do
-  scenario 'author or editor can approve a comment' do
-    create_comment
+  scenario 'author or editor can approve a comment on post' do
+    create_post_comment
     sign_in(:author)
     visit post_path(posts(:mvc))
     click_on "Edit"

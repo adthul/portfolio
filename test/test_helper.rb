@@ -22,8 +22,17 @@ def sign_in(role = :editor)
   click_on "Sign in"
 end
 
-def create_comment
+def create_post_comment
   visit post_path(posts(:mvc))
+  click_on "Comment"
+  fill_in "Name", with: comments(:testcom).author
+  fill_in "Email", with: comments(:testcom).author_email
+  fill_in "Comment", with: comments(:testcom).content
+  click_on "Create Comment"
+end
+
+def create_project_comment
+  visit project_path(projects[:portfolio])
   click_on "Comment"
   fill_in "Name", with: comments(:testcom).author
   fill_in "Email", with: comments(:testcom).author_email

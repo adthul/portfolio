@@ -1,72 +1,75 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :post
+  before_action :set_post, only: [:index, :show, :edit, :new]
+  before_action :load_commentable
+  before_action :set_project, only: [:show, :edit, :index, :new]
+  before_action :set_comment, only: [:index, :show, :destroy, :update]
 
   def index
-    @comments = post.comments
   end
 
   def show
-    @comment = post.comments.find(params[:id])
+    @comment = @commentable.comments.find(params[:id])
   end
 
   def new
-    @comment = post.comments.build
+    @comment = @commentable.comments.build
   end
 
   def edit
-    @comment = post.comments.find(params[:id])
+    @comment = @commentable.comments.find(params[:id])
   end
 
   def create
-    @comment = post.comments.build(comment_params)
+    @comment = @commentable.comments.build(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to post, notice: 'Comment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: post }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      redirect_to @commentable, notice: 'Comment was successfully created.'
+    else
+      instance_variable_set("@#{@resource.singularize}".to_sym, @commentable)
+      render template: "#{@resource}/show"
     end
   end
 
   def update
-    @comment = post.comments.find(params[:id])
-
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to post, notice: 'Comment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    @comment = @commentable.comments.find(params[:id])
+    @comment.approve!
+    if @comment.update(comment_params)
+      redirect_to @commentable, notice: 'Comment was successfully updated.'
+    else
+      redirect_to @commentable, notice: 'Comment could not be updated.'
     end
   end
 
   def destroy
-    @comment = post.comments.find(params[:comment])
-
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to post_url }
-      format.json { head :no_content }
+    @comment.approve!
+    if @comment.destroy
+      redirect_to @commentable, notice: 'Comment successfully deleted.'
+    else
+      redirect_to @commentable, notice: 'Comment could not be deleted.'
     end
   end
 
   private
 
-  def post
-    post = Post.find(params[:post_id])
+  def load_commentable
+    @resource, id = request.path.split('/')[1,2]
+    @commentable = @resource.singularize.classify.constantize.find(id)
+  end
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
+
+  def set_project
+    @project = Project.find(params[:project_id])
   end
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = @commentable.comments.find(params[:id])
   end
 
   def comment_params
-    params.require(:comment).permit(:author, :author_email, :author_url, :user_ip, :user_agent, :referrer, :content, :approved)
+    params.require(:comment).permit(:author, :author_email, :author_url, :user_ip,
+     :user_agent, :referrer, :content, :approved, :commentable_id, :commentable_type)
   end
 end

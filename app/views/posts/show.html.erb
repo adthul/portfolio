@@ -17,18 +17,10 @@
   <b>Status:</b>
   <%= @post.published? ? "Published" : "Unpublished" %>
 </p>
-<%= link_to 'Comment', new_post_comment_path(@post), class: "button radius" %>
-<%= link_to 'Edit', edit_post_path(@post), class: "button radius" %> |
-<%= link_to 'Back', posts_path, class: "button radius" %>
 
-<% @post.comments.each do |comment| %>
-    <p><em>Name:<em>
-      <%= comment.author %>
-    </p>
-    <p><em>Comment:<em>
-      <%= comment.content %>
-    </p>
-    <%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %> |
-    <%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+<%= render 'comments/form' %>
+<%= render 'comments/table' %>
 
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %> |
+<%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
