@@ -17,6 +17,8 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'omniauth-twitter'
 gem 'figaro'
+gem 'aws-sdk'
+gem 'paperclip', '~> 3.0'
 
 group :development, :test do
   gem 'sqlite3'

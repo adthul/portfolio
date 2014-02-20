@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: [:update, :create]
 
   def index
     @projects = Project.all
@@ -21,8 +22,8 @@ class ProjectsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @project.update_attributes(project_params)
-        format.html { redirect_to @project, notice: "Project was successfully updated." }
+      if @project.update(project_params)
+        format.html { redirect_to projects_path, notice: "Project was successfully updated." }
         format.js
       else
         format.html { render :edit, error: "Project could not be updated" }
@@ -32,6 +33,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project.image = nil
     @project.destroy
     respond_to do |format|
       format.html { redirect_to posts_url }
@@ -44,7 +46,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: "Project has been created." }
+        format.html { redirect_to projects_path, notice: "Project has been created." }
         format.js
       else
         format.html { render :new, error: "Project could not be saved." }
@@ -56,7 +58,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :technologies_used)
+    params.require(:project).permit(:name, :technologies_used, :image)
   end
 
   def set_project

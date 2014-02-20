@@ -1,6 +1,6 @@
 Portfolio::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  Paperclip.options[:command_path] = "/usr/bin/"
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -28,4 +28,14 @@ Portfolio::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_protocol => 'http',
+  :s3_credentials => {
+    :bucket => ENV['AWS_BUCKET'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end

@@ -1,6 +1,8 @@
 <div id="<%= dom_id project %>">
   <h3><%= project.name %></h3>
+  <%= image_tag project.image.url(:thumb) %>
   <p><%= project.technologies_used %></p>
+
   <div class="nav">
     <%= link_to 'Show', project %> |
     <%= link_to 'Edit', edit_project_path(project), id: "edit_link", remote: true %> |
