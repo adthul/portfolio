@@ -14,9 +14,14 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require browser_timezone_rails/application.js
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$(function() {
+  $('.edit_post').submitOnCheck();
+});
 
 $(document).ajaxError(function( event, jqxhr, settings, exception) {
   alert(jqxhr.responseText);

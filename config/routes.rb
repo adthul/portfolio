@@ -6,14 +6,12 @@ Portfolio::Application.routes.draw do
     resources :comments
   end
 
+scope ":locale" do
   resources :posts do
     resources :comments
   end
+end
 
-  # get "projects", to: "projects#index"
-  # get "welcome/index"
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
   get 'myposts', to: 'posts#myposts'
   # You can have the root of your site routed with "root"
   root 'welcome#index'

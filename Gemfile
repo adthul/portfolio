@@ -19,6 +19,9 @@ gem 'omniauth-twitter'
 gem 'figaro'
 gem 'aws-sdk'
 gem 'paperclip', '~> 3.0'
+gem 'browser-timezone-rails'
+gem 'globalize'
+gem 'simple_form'
 
 group :development, :test do
   gem 'sqlite3'

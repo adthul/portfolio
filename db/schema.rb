@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140220222011) do
+ActiveRecord::Schema.define(version: 20140227002345) do
 
   create_table "comments", force: true do |t|
     t.string   "author"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20140220222011) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
   end
+
+  create_table "post_translations", force: true do |t|
+    t.integer  "post_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "body"
+  end
+
+  add_index "post_translations", ["locale"], name: "index_post_translations_on_locale"
+  add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id"
 
   create_table "posts", force: true do |t|
     t.string   "title"
